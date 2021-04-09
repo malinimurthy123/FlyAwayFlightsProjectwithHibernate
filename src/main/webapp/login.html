@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login Page</title>
+<style type="text/css">
+label, input {
+    display: inline-block;
+    vertical-align: baseline;
+    width: 125px;
+}
+
+label {
+    color: #2D2D2D;
+    font-size: 25px;
+}
+
+form {
+    width: 300px;
+}
+a{
+font-size: 20px;
+color: Blue;
+}
+</style>
+
+</head>
+<body style="background-color: whitesmoke">
+
+<a href="index.html">Home</a> ||
+<a href="available-flight.jsp">Back</a> <br><br>
+
+<fieldset>
+<legend style="font-size: 50px">Login Here</legend>
+<div id="main">
+<form method="post" action="login">
+ <label for="name">Username:</label><input type="text" id="name" name="name"><br/><br>
+ <label for="password">Password:</label><input type="password" id="password" name="password"><br/><br>
+<button type="submit" style="font-size: 20px;">login</button><br><br>
+<br><br><br>
+<input type="button" onclick="document.location.href='Registration'" value="New Member Register" style="color: blue; width: 200px; ">
+
+</form>
+</div>
+</fieldset>
+<div>
+<img src="flight1.jpg" height="303" width="480"/>
+</div>
+</body>
+</html>
