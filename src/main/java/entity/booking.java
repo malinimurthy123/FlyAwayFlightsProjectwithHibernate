@@ -1,9 +1,12 @@
 package entity;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Embeddable;
 
-import javax.persistence.*;
-import com.flyaway.HibernateUtil;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 @Embeddable
 @Entity
@@ -11,24 +14,35 @@ import org.hibernate.Transaction;
 
 public class booking {
 
-    @Id
-    private String bookingconfirmation;
-    private String fname;
-    private String lname;
-    private String totalpassengers;
-    private double price;
-
     public booking() {
-        super();
+
     }
 
+    @Column(name = "bookingconfirmation")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    int bookingconfirmation;
 
-    public void setBookingconfirmation(String bookingconfirmation) {
-        this.bookingconfirmation = bookingconfirmation;
-    }
+    @Column(name = "fname")
+    String fname;
 
-    public String getBookingconfirmation() {
+
+    @Column(name = "lname")
+    String lname;
+
+
+    @Column(name = "totalpassengers")
+    String totalpassengers;
+
+    @Column(name = "price")
+    double price;
+
+    public int getBookingconfirmation() {
         return bookingconfirmation;
+    }
+
+    public void setBookingconfirmation(int bookingconfirmation) {
+        this.bookingconfirmation = bookingconfirmation;
     }
 
     public String getFname() {
@@ -63,8 +77,8 @@ public class booking {
         this.price = price;
     }
 
-    public booking(String bookingconfirmation, String fname, String lname, String totalpassengers, double price) {
-        this.bookingconfirmation = bookingconfirmation;
+    public void bookingconfirmation(String fname, String lname, String totalpassengers, double price) {
+        //this.ProductID = ProductID;
         this.fname = fname;
         this.lname = lname;
         this.totalpassengers = totalpassengers;

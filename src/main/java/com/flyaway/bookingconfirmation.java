@@ -1,8 +1,6 @@
 package com.flyaway;
 
 import entity.booking;
-import entity.userdetails;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -16,13 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Random;
 import java.util.logging.Logger;
 
-@WebServlet("/passengerpayment")
+@WebServlet("/booking")
 public class bookingconfirmation extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private final static Logger logger = Logger.getLogger("bookingconfirmation.class");
+    private final static Logger logger = Logger.getLogger("booking.class");
     public bookingconfirmation() {
         super();
 
@@ -31,17 +28,17 @@ public class bookingconfirmation extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         response.setContentType("text/html");
-        response.sendRedirect("PaymentConfirmation.html");
+        response.sendRedirect("booking.jsp");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        Logger.getLogger("inside post method");
         SessionFactory theFactory = new Configuration()
                 .configure("hibernate-config.xml")
                 .addAnnotatedClass(booking.class)
                 .buildSessionFactory();
 
-        Session theSession = theFactory.getCurrentSession();
+
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
         //boolean status = false;
@@ -49,25 +46,25 @@ public class bookingconfirmation extends HttpServlet {
 
             //response.setContentType("text/html");
             Session session = HibernateUtil.getSessionFactory().openSession();
-
+            Logger.getLogger("inside post method");
             int min = 1;
             int max = 200;
-
+            double price = 1200.00;
             int randomValue = (int) Math.floor(Math.random() * (max - min + 1) + min);
             System.out.println(randomValue);
             String bookingconfirmation = String.valueOf(randomValue);
 
-            //String bookingconfirmation=request.getParameter("bookingconfirmation");
+            //String booking=request.getParameter("booking");
             String fname = request.getParameter("fname");
             String lname = request.getParameter("lname");
             String totalpassengers = request.getParameter("totalpassengers");
-            double price = Double.parseDouble(request.getParameter("price"));
+            //double price = Double.parseDouble(request.getParameter("price"));
             System.out.println(randomValue);
 
-            price = 1200.00;
+
             booking booking = new booking();
-            //bookingconfirmation,fname,lname,totalpassengers,price
-            booking.setBookingconfirmation(bookingconfirmation);
+            //booking,fname,lname,totalpassengers,price
+            //booking.setBookingconfirmation(booking);
             booking.setFname(fname);
             booking.setLname(lname);
             booking.setTotalpassengers(totalpassengers);
@@ -76,14 +73,14 @@ public class bookingconfirmation extends HttpServlet {
             session.save(booking);
             tx.commit();
             //theSession.close();
-
+            Logger.getLogger("save");
             System.out.println("Object Saved");
             out.println("<p>booking confirmed..</p>");
             out.println("<html><body>");
             out.println("<b>Flight Booking Confirmed</b><br>");
 
 
-            response.sendRedirect("PaymentConfirmation.html");
+            response.sendRedirect("booking.jsp");
 
         } catch (HibernateException e) {
             e.printStackTrace();

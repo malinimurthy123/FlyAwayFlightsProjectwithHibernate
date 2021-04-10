@@ -40,10 +40,10 @@
      <input type="text" name="lname" placeholder="Murthy" required> <br><br>
 
     <LABEL>Credit Card Number:</LABEL><br><br>
-    <input type="text" name="cardnumber" placeholder="7756 3456 8765 9987" required> <br><br>
+    <input type="text" name="cardnumber" placeholder="7756345687659987" required> <br><br>
 
     <LABEL>CVV Number :</LABEL><br><br>
-    <input type="number" name="securitycode" placeholder="000" required> <br><br>
+    <input type="number" name="securitycode" placeholder="123" required> <br><br>
     <br/>
 
     <LABEL>Expiration (yyyy-MM-dd)</LABEL><br><br>
