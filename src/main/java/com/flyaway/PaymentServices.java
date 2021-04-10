@@ -2,8 +2,8 @@ package com.flyaway;
 
 import java.util.*;
 
-        import com.paypal.api.payments.*;
-        import com.paypal.base.rest.*;
+import com.paypal.api.payments.*;
+import com.paypal.base.rest.*;
 
 public class PaymentServices {
     private static final String CLIENT_ID = "ASUCNg-b_aNhuCS7fyhoiBKk1kOlkMoAjgcLxnmKO2T9ukFhl2ovu-1sTyMhF2R-Zhfmkrmfg8hHCvKk";
@@ -38,7 +38,7 @@ public class PaymentServices {
         PayerInfo payerInfo = new PayerInfo();
         payerInfo.setFirstName("Malini")
                 .setLastName("Murthy")
-                .setEmail("krmalini77@gmail.com");
+                .setEmail("krmalini25@gmail.com");
 
         payer.setPayerInfo(payerInfo);
 
@@ -47,8 +47,8 @@ public class PaymentServices {
 
     private RedirectUrls getRedirectURLs() {
         RedirectUrls redirectUrls = new RedirectUrls();
-        redirectUrls.setCancelUrl("http://localhost:8080/PaypalTest/cancel.html");
-        redirectUrls.setReturnUrl("http://localhost:8080/PaypalTest/review_payment");
+        redirectUrls.setCancelUrl("https://www.sandbox.paypal.com/PaypalTest/cancel.html");
+        redirectUrls.setReturnUrl("https://www.sandbox.paypal.com/PaypalTest/review_payment");
 
         return redirectUrls;
     }
@@ -102,10 +102,6 @@ public class PaymentServices {
         return approvalLink;
     }
 
-    public Payment getPaymentDetails(String paymentId) throws PayPalRESTException {
-        APIContext apiContext = new APIContext(CLIENT_ID, CLIENT_SECRET, MODE);
-        return Payment.get(apiContext, paymentId);
-    }
 
     public Payment executePayment(String paymentId, String payerId)
             throws PayPalRESTException {
@@ -117,5 +113,11 @@ public class PaymentServices {
         APIContext apiContext = new APIContext(CLIENT_ID, CLIENT_SECRET, MODE);
 
         return payment.execute(apiContext, paymentExecution);
+    }
+
+
+    public Payment getPaymentDetails(String paymentId) throws PayPalRESTException {
+        APIContext apiContext = new APIContext(CLIENT_ID, CLIENT_SECRET, MODE);
+        return Payment.get(apiContext, paymentId);
     }
 }
