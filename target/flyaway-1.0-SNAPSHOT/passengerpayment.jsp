@@ -32,12 +32,12 @@
 </head>
 <body>
 <h1>Enter passenger and Payment Details</h1>
-<form name="bookingconfirmation" method="POST" action="PaymentConfirmation.html">
+<form name="bookingconfirmation" method="POST" action=bookingconfirmation>
     <LABEL>First Name :</LABEL><br><br>
-     <input type="text" name="firstname" placeholder="Prasad" required> <br/>
+     <input type="text" name="fname" placeholder="Prasad" required> <br/>
 
     <LABEL>Last Name :</LABEL><br><br>
-     <input type="text" name="lastname" placeholder="Murthy" required> <br><br>
+     <input type="text" name="lname" placeholder="Murthy" required> <br><br>
 
     <LABEL>Credit Card Number:</LABEL><br><br>
     <input type="text" name="cardnumber" placeholder="7756 3456 8765 9987" required> <br><br>
@@ -50,9 +50,9 @@
     <input type="date" name="expiration" placeholder="2024-10-31"  required> <br><br>
 
     <LABEL>Total Passengers</LABEL><br><br>
-    <input type="text" name="passengers" placeholder="1"  required> <br><br>
+    <input type="text" name="totalpassengers" placeholder="1"  required> <br><br>
 
-    <button type="button" class="btn btn-info">Continue to confirm booking</button>
+    <button type="button" class="btn btn-info" onclick="addpet_onclick()">Continue to confirm booking</button>
 
 </form>
 </body>

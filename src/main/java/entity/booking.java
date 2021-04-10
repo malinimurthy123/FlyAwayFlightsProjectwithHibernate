@@ -1,7 +1,9 @@
 package entity;
 
 import javax.persistence.*;
-
+import com.flyaway.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 @Embeddable
 @Entity
