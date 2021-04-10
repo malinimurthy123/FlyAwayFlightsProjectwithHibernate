@@ -64,7 +64,7 @@
 
 	<%
 
-		String driver = "com.mysql.jdbc.Driver";
+		String driver = "com.mysql.cj.jdbc.Driver";
 		String connectionUrl = "jdbc:mysql://localhost:3306/";
 		String database = "flyawayflight";
 		String userid = "root";

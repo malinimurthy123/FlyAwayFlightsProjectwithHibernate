@@ -6,7 +6,7 @@
     <session-factory>
         <!-- Database connection settings -->
 
-        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/flyawayflight</property>
         <property name="connection.username">root</property>
         <property name="connection.password"></property>
@@ -29,6 +29,7 @@
         <mapping  class="entity.flightdetail"/>
         <mapping  class="entity.airlines"/>
         <mapping  class="entity.userdetails"/>
+        <mapping  class="entity.booking"/>
 
 
     </session-factory>

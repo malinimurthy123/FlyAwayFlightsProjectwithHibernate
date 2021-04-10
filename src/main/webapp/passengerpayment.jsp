@@ -32,7 +32,7 @@
 </head>
 <body>
 <h1>Enter passenger and Payment Details</h1>
-<form name="paymentDetails" method="POST" action="pay-online">
+<form name="bookingconfirmation" method="POST" action="PaymentConfirmation.html">
     <LABEL>First Name :</LABEL><br><br>
      <input type="text" name="firstname" placeholder="Prasad" required> <br/>
 
@@ -43,12 +43,14 @@
     <input type="text" name="cardnumber" placeholder="7756 3456 8765 9987" required> <br><br>
 
     <LABEL>CVV Number :</LABEL><br><br>
-    <input type="number" name="securitycode" placeholder="987" required> <br><br>
+    <input type="number" name="securitycode" placeholder="000" required> <br><br>
     <br/>
 
     <LABEL>Expiration (yyyy-MM-dd)</LABEL><br><br>
     <input type="date" name="expiration" placeholder="2024-10-31"  required> <br><br>
 
+    <LABEL>Total Passengers</LABEL><br><br>
+    <input type="text" name="passengers" placeholder="1"  required> <br><br>
 
     <button type="button" class="btn btn-info">Continue to confirm booking</button>
 
