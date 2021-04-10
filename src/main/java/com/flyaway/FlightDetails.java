@@ -72,6 +72,26 @@ public class FlightDetails extends HttpServlet {
 
         Session session= HibernateUtil.getSessionFactory().openSession();
         Transaction tx=session.beginTransaction();
+
+
+        // using HQL
+        List<flightdetail> listFlight = session.createQuery("from flightdetail", flightdetail.class).getResultList();
+        //session.save(flight);
+        //tx.commit();
+
+        PrintWriter out = response.getWriter();
+        out.println("<html><body>");
+        out.println("<b>Flight Listing</b><br>");
+        for (flightdetail flightdetail : listFlight) {
+            System.out.println(flightdetail.getId());
+            out.println("ID: " + String.valueOf(flightdetail.getId()) + ", source: " + flightdetail.getSource() +
+                    ",Destination: " + String.valueOf(flightdetail.getDestination()) + ", flightdate: " + flightdetail.getDate() + "<br>");
+        }
+        out.println("<a href='index.jsp'>Return to homepage</a><br>");
+        out.println("</body></html>");
+        request.setAttribute("listFlight", listFlight);
+        request.getRequestDispatcher("/flight-details.jsp").forward(request, response);
+
         try {
             listFlight(request, response);
         } catch (SQLException throwables) {

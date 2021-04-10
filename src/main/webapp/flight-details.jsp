@@ -1,7 +1,16 @@
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ page import="entity.flightdetail" %>
+<%@ page import="org.hibernate.Session" %>
+<%@ page import="com.flyaway.HibernateUtil" %>
+<%@ page import="org.hibernate.Transaction" %>
+<%@ page import="java.io.PrintWriter" %>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
 
 <!DOCTYPE html">
 <html>
@@ -33,6 +42,12 @@
 		background-color: #4287f5;
 		color: white;
 	}
+	<style>
+	.img-container {
+	text-align: center;
+	display: block;
+	}
+	</style>
 </style>
 </head>
 <body>
@@ -46,13 +61,66 @@
 			<th>Ticket Price</th>
 			</tr>
 
+
+	<%
+
+		String driver = "com.mysql.jdbc.Driver";
+		String connectionUrl = "jdbc:mysql://localhost:3306/";
+		String database = "flyawayflight";
+		String userid = "root";
+		String password = "";
+		try {
+			Class.forName(driver);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+
+	%>
+
+	<%
+		try{
+			connection = DriverManager.getConnection(connectionUrl+database, userid, password);
+			statement=connection.createStatement();
+			String sql ="select * from flightdetail";
+			resultSet = statement.executeQuery(sql);
+			while(resultSet.next()){
+	%>
+	<tr>
+		<td><%=resultSet.getString("flight_id") %></td>
+		<td><%=resultSet.getString("source") %></td>
+		<td><%=resultSet.getString("destination") %></td>
+		<td><%=resultSet.getString("price") %></td>
+		<td><%=resultSet.getString("date") %></td>
+		<td><button value="submit" href="passengerPayment.html">continue with booking</button></td>
+
+		<br>
+
+	</tr>
+	<%
+			}
+			connection.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	%>
+<br>
 <%
-	out.print("<td>" +request.getParameter("source") );
+	out.print("<td>" +"Flight Search Information searched from Home Page"+"</td>");
+
+%>
+<%
+
+	out.print("<td>" +request.getParameter("source"));
 	out.print("<td>" +request.getParameter("destination"));
 	out.print("<td>" +request.getParameter("travellers"));
 	out.print("<td>" +request.getParameter("date"));
 
 %>
+
+
 <c:forEach var="flight1" items="${listFlight}">
 	<tr>
 	<td><c:out value="${flight1.source}"/></td>
@@ -67,6 +135,12 @@
 </c:forEach>
 
 </table>
-<button value="submit" href="passengerPayment.html">continue with booking</button>
+<Div>
+
+	<img src="Map_of_USA.png" height="303" width="780"/>
+	<img src="How-to-find.jpg" height="303" width="780"/>
+
+</Div>
+
 </body>
 </html>

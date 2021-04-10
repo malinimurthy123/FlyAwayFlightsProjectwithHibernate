@@ -49,7 +49,7 @@
     <LABEL>Expiration (yyyy-MM-dd)</LABEL><br><br>
     <input type="date" name="expiration" placeholder="2024-10-31"  required> <br><br>
 
-    
+
     <button type="button" class="btn btn-info">Continue to confirm booking</button>
 
 </form>

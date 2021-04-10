@@ -14,9 +14,10 @@ public class FlightDAO {
      */
     @SuppressWarnings("unchecked")
 
+    Session session= HibernateUtil.getSessionFactory().openSession();
+    Transaction tx=session.beginTransaction();
+
     public List<flightdetail> getAllFlight() {
-
-
 
         Transaction transaction = null;
         List < flightdetail > listOfFlight = null;
