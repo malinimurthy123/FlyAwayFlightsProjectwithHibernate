@@ -1,6 +1,11 @@
 package entity;
 
+import com.flyaway.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Embeddable
 @Entity
