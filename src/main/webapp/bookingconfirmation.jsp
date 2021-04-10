@@ -14,7 +14,12 @@ color: Blue;
 </head>
 <body>
 <h1 style="color: forestgreen;">Booking Confirmed!</h1>
+<%
 
+    out.print("<td>" +request.getParameter("uname"));
+    out.print("<td>" +request.getParameter("fname"));
+    out.print("<td>" +request.getParameter("lname"));
+%>
 
 </body>
 </html>
