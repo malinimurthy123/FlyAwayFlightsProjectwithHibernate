@@ -52,7 +52,8 @@
     <LABEL>Total Passengers</LABEL><br><br>
     <input type="text" name="totalpassengers" placeholder="1"  required> <br><br>
 
-    <button type="button" class="btn btn-info" onclick="addpet_onclick()">Continue to confirm booking</button>
+
+    <input type="submit" value="Submit" onclick="addpet_onclick()">
 
 </form>
 </body>

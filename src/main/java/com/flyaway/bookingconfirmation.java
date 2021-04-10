@@ -16,10 +16,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Logger;
 
-@WebServlet("/booking")
+@WebServlet("/bookingconfirmation")
 public class bookingconfirmation extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private final static Logger logger = Logger.getLogger("booking.class");
+    private final static Logger logger = Logger.getLogger("bookingconfirmation.class");
     public bookingconfirmation() {
         super();
 
@@ -33,11 +33,6 @@ public class bookingconfirmation extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Logger.getLogger("inside post method");
-        SessionFactory theFactory = new Configuration()
-                .configure("hibernate-config.xml")
-                .addAnnotatedClass(booking.class)
-                .buildSessionFactory();
-
 
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
@@ -79,8 +74,7 @@ public class bookingconfirmation extends HttpServlet {
             out.println("<html><body>");
             out.println("<b>Flight Booking Confirmed</b><br>");
 
-
-            response.sendRedirect("booking.jsp");
+            response.sendRedirect("bookingconfirmation.jsp");
 
         } catch (HibernateException e) {
             e.printStackTrace();
